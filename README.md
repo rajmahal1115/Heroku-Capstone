@@ -172,7 +172,7 @@ PATCH '/movies/<int:id>'
 
 -  Request arguemnt : id of a movie as int
 - Roles able to perform the action: Casting Director, Executive Producer
-- - Modifies the movie based on the id provided. Returns a succcess message and the new modified movie's information. If there is an issue then it returns an error 
+- Modifies the movie based on the id provided. Returns a succcess message and the new modified movie's information. If there is an issue then it returns an error 
 
 ```
 {
