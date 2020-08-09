@@ -9,8 +9,9 @@ from auth import AuthError, requires_auth
 
 def create_app(test_config=None):
     # create and configure the app
+    database_path = os.environ['DATABASE_URL'] if not test_config else test_config['DATABASE_URL']
     app = Flask(__name__)
-    setup_db(app)
+    setup_db(app, database_path)
     CORS(app)
 
     # get a single actor
@@ -204,7 +205,6 @@ def create_app(test_config=None):
     return app
 
 
-app = create_app()
-
 if __name__ == '__main__':
+    app = create_app()
     app.run()

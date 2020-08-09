@@ -13,12 +13,13 @@ from auth  import AuthError, requires_auth
 class CastingAgencyTestCase(unittest.TestCase):
 
     def setUp(self):
-        self.app = create_app()
-        self.client = self.app.test_client
+        
         self.database_name = "castingAgency_test"
         self.database_path = "postgres://{}/{}".format(
-            'localhost:5432', self.database_name)
-        setup_db(self.app,self.database_path)
+            'postgres:Narnarayan@localhost:5432', self.database_name)
+        self.app = create_app({"DATABASE_URL":self.database_path})
+        self.client = self.app.test_client
+
 
         with self.app.app_context():
             self.db = SQLAlchemy()
@@ -28,13 +29,12 @@ class CastingAgencyTestCase(unittest.TestCase):
                 self.createActors()
                 self.createMovies()
         
-        self.casting_assistant = ('bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IklJb0wwQkNXS0lqdF9vU1gyczFzNSJ9.eyJpc3MiOiJodHRwczovL2Rldi0zanY0YmswNS51cy5hdXRoMC5jb20vIiwic3ViIjoiYXV0aDB8NWYyMzcyNDYzMmNlYTMwMjIxMTQxNTkwIiwiYXVkIjoiY2Fwc3RvbmUiLCJpYXQiOjE1OTY0MDE0NTksImV4cCI6MTU5NjQ4Nzg1OSwiYXpwIjoiVzU3T1V3TXJoM2h6emx1a0FiREtBTzEweVppQVd4UjEiLCJzY29wZSI6IiIsInBlcm1pc3Npb25zIjpbImdldDphY3RvcnMiLCJnZXQ6bW92aWVzIl19.dlIG8C-WHOJXrpkWA6m4k0MeN6N866I526UwoaxulpVQ_u3Vj_xS3YUqus7ZNfKqkuG4oBAnbECTtTMiPVUZTYJqaTgz6Ka9EpkzJGKb98iaeOi8Cren0OKuaXP12JAiRSM2ra8ebUEtTU7CfKGNsSEllPnXyUBpMYs-ThkBYpPQtIDoO61QeTuORVpXtr1XjZpIuvtId2M2C8uPv2450T6R84PMQOKQMubtUQDI8ZAr8sG3pdQYSTvYvEWPlaFqtac995czCVe0VzZ7MpE0pudIqOH557wdxz3335L6D-AMGPinysKftQX2KyHa4fJY9fuRJ0fNlPdbAMa-dShAFw')
+        self.casting_assistant = ('bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IklJb0wwQkNXS0lqdF9vU1gyczFzNSJ9.eyJpc3MiOiJodHRwczovL2Rldi0zanY0YmswNS51cy5hdXRoMC5jb20vIiwic3ViIjoiYXV0aDB8NWYyMzcyNDYzMmNlYTMwMjIxMTQxNTkwIiwiYXVkIjoiY2Fwc3RvbmUiLCJpYXQiOjE1OTY5ODgwODMsImV4cCI6MTU5NzA3NDQ4MywiYXpwIjoiVzU3T1V3TXJoM2h6emx1a0FiREtBTzEweVppQVd4UjEiLCJzY29wZSI6IiIsInBlcm1pc3Npb25zIjpbImdldDphY3RvcnMiLCJnZXQ6bW92aWVzIl19.f9gac23KuxweDnXjdd8ij_15UbMVVgASbUZlU4MWElSiKUzqXKN9Ota6p10oiI8CfFhaW7sBGG9Gp7G8qfx7-iXIAOHxPkxXwQszYL_zEfh5UxthekUVXRo7yMDch3h1rtfU_p7l6Qt0sWj7CC_2tSD1KJmpmChzBv194SPPIKK7fo0FtT0n5sUSpCafUTl9tNMisRQKyXY1tVlyq71CG5ZHEGv2Vcu92tvKYFZpwxtp05hSojHMiY1G-ss-u_5SFsSxuNAfpGzGJOJio9-pVFaLYuSMpVneS05QkfKC0uWCXXt9nDrv8txeEhq1WyM974-dV3RX3Ej3n3ygQ4wEUg')
 
-        self.casting_director = ('bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IklJb0wwQkNXS0lqdF9vU1gyczFzNSJ9.eyJpc3MiOiJodHRwczovL2Rldi0zanY0YmswNS51cy5hdXRoMC5jb20vIiwic3ViIjoiYXV0aDB8NWYyMzcyMjVkYzY4MjYwMGEwYjYzYzM0IiwiYXVkIjoiY2Fwc3RvbmUiLCJpYXQiOjE1OTY0MDExMDMsImV4cCI6MTU5NjQ4NzUwMywiYXpwIjoiVzU3T1V3TXJoM2h6emx1a0FiREtBTzEweVppQVd4UjEiLCJzY29wZSI6IiIsInBlcm1pc3Npb25zIjpbImRlbGV0ZTphY3RvcnMiLCJnZXQ6YWN0b3JzIiwiZ2V0Om1vdmllcyIsInBhdGNoOmFjdG9ycyIsInBhdGNoOm1vdmllcyIsInBvc3Q6YWN0b3JzIl19.jEHB8woreVJ2TpXEA8iohOekHfFvPUMEj-hbJVHOTqjW1NcGYuF-3eN1U0rUEjaPt_rR3Xy-X_ORoyBiFsqjetIZpmmZXH8VQUpEuo86UQKyha-aL4ZO5JO8zSAsVU8xUduKvabg5kTlNDtAVcw_2NL8eMC37EgkFb80vKOg04Flqo7eiyCrLPUdEOlDDVyruc2ZfrwbhJF7GDjXZ8ISEA4x44Yd0Cys_JqL0U93WEswrrCWl9QN987bxV2JMs9akiBc6MyGd6N96aEMGeX0x1_Eb3C_K4GkpEhzYhE-FfuRlAt3ci6a-2X2lXF7g--vvYGkhpR1SCsL6VLmnD3n4g')
+        self.casting_director = ('bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IklJb0wwQkNXS0lqdF9vU1gyczFzNSJ9.eyJpc3MiOiJodHRwczovL2Rldi0zanY0YmswNS51cy5hdXRoMC5jb20vIiwic3ViIjoiYXV0aDB8NWYyMzcyMjVkYzY4MjYwMGEwYjYzYzM0IiwiYXVkIjoiY2Fwc3RvbmUiLCJpYXQiOjE1OTY5OTA3MzMsImV4cCI6MTU5NzA3NzEzMywiYXpwIjoiVzU3T1V3TXJoM2h6emx1a0FiREtBTzEweVppQVd4UjEiLCJzY29wZSI6IiIsInBlcm1pc3Npb25zIjpbImRlbGV0ZTphY3RvcnMiLCJnZXQ6YWN0b3JzIiwiZ2V0Om1vdmllcyIsInBhdGNoOmFjdG9ycyIsInBhdGNoOm1vdmllcyIsInBvc3Q6YWN0b3JzIl19.fN6UaprJs7xZL9ja00tpOwabUfVycLBySEH1Qno63N_Gjk-6bjrNy5uZXplc0WxF4oM9ZwjbZnO3fEC2VgBlpI3LXzNgHcwRkiPu6iUHByUMETR6-AnKW3ddXqhBvmhTWMCCsJKNy9aciWvjK4-ERI3WXNDcTLB9qHiYa4ObnrrJFNsHNjj-VVIaT0iVz6jbbAHRAcJipx1Jp_4arN421BZ11w74i_uhB8d3ze_2Bf6X4Vsd1CmOumsI7_5QjAxzgTRgn2VrFgP7OfxfYfG9ZezUKwMmpYVLS88VgcoBWBcX3dFhG3JrppKZ6pKIXaHaeA08TOQ2z_xMXEUMcsgcyg')
 
-        self.executive_producer = ('bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IklJb0wwQkNXS0lqdF9vU1gyczFzNSJ9.eyJpc3MiOiJodHRwczovL2Rldi0zanY0YmswNS51cy5hdXRoMC5jb20vIiwic3ViIjoiYXV0aDB8NWYyMzcyYjc1Yzg0OGYwMDM3YzQyODE5IiwiYXVkIjoiY2Fwc3RvbmUiLCJpYXQiOjE1OTY0MDIyMjcsImV4cCI6MTU5NjQ4ODYyNywiYXpwIjoiVzU3T1V3TXJoM2h6emx1a0FiREtBTzEweVppQVd4UjEiLCJzY29wZSI6IiIsInBlcm1pc3Npb25zIjpbImRlbGV0ZTphY3RvcnMiLCJkZWxldGU6bW92aWVzIiwiZ2V0OmFjdG9ycyIsImdldDptb3ZpZXMiLCJwYXRjaDphY3RvcnMiLCJwYXRjaDptb3ZpZXMiLCJwb3N0OmFjdG9ycyIsInBvc3Q6bW92aWVzIl19.OhJ3xdgiAt7F3ubHyHbOu5Q1HsSiKnqgIFEhMNpqhM_byugUTZ7Qt6U_kV1_IE6-9ePCgGp3qOkirtw6XnffWN879yaXMcrdMfkwgwiOIVJwLalArBdytr_LhE9hubLjWpxKulszc7Jtv-2Yu4Ew6Z3GpXKu3ZTN3uhKpSeU7OIIEHqpz8IzXFHc5xUFWQPTYoSyUd27M3_5SG0O2s6Y6KF8OUsuQhlkvxpn6wjTL45LTMUKjMO2dpmq447aKoGuzrRK69HOzRv9Q02zsYOPFgaKUUTLMqbHDnhq-Ol2U-DWjcSlJEQL1NIUc8TTJVMbj5eKJT9TUj7SgzMSTBMm7A')
+        self.executive_producer = ('bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IklJb0wwQkNXS0lqdF9vU1gyczFzNSJ9.eyJpc3MiOiJodHRwczovL2Rldi0zanY0YmswNS51cy5hdXRoMC5jb20vIiwic3ViIjoiYXV0aDB8NWYyMzcyYjc1Yzg0OGYwMDM3YzQyODE5IiwiYXVkIjoiY2Fwc3RvbmUiLCJpYXQiOjE1OTY5OTEyODQsImV4cCI6MTU5NzA3NzY4NCwiYXpwIjoiVzU3T1V3TXJoM2h6emx1a0FiREtBTzEweVppQVd4UjEiLCJzY29wZSI6IiIsInBlcm1pc3Npb25zIjpbImRlbGV0ZTphY3RvcnMiLCJkZWxldGU6bW92aWVzIiwiZ2V0OmFjdG9ycyIsImdldDptb3ZpZXMiLCJwYXRjaDphY3RvcnMiLCJwYXRjaDptb3ZpZXMiLCJwb3N0OmFjdG9ycyIsInBvc3Q6bW92aWVzIl19.10HtdU3Uzkwu1f7bpZPihNrfIwOLpFlbIxKvn_JQ6eMw3Esh5THJGpR5_zBXXVjqCMuu7cGwC-W60JgDupr42Bk1mKPMG336m6Ta9l7vik6oSBAvw8fCPpXIDO5aVQqsxWRrwAUisR6VZqbIiU2p6LTDaFgl5iqbokboRfHr14TRYpGYy5_UtrZ7hsPnL6FAFoSwFLhQhN_bRA6gUx0YypbDYunbjBDGTZ0s9-8lwI8nvY0oaS5jrJYoUEcHEyMRZoAfJWigN3iHAt9DV3JjEpyzvPEc7vUxyXxyMHu2PtxhCEdwc-AKUB5dwI5mrMrM9jPuZlkCuoDj4GKWEcW2mA')
 
-        #not expired yet
         self.expired_token = ('bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IklJb0wwQkNXS0lqdF9vU1gyczFzNSJ9.eyJpc3MiOiJodHRwczovL2Rldi0zanY0YmswNS51cy5hdXRoMC5jb20vIiwic3ViIjoiYXV0aDB8NWYyMzcyYjc1Yzg0OGYwMDM3YzQyODE5IiwiYXVkIjoiY2Fwc3RvbmUiLCJpYXQiOjE1OTY0MDIyMjcsImV4cCI6MTU5NjQ4ODYyNywiYXpwIjoiVzU3T1V3TXJoM2h6emx1a0FiREtBTzEweVppQVd4UjEiLCJzY29wZSI6IiIsInBlcm1pc3Npb25zIjpbImRlbGV0ZTphY3RvcnMiLCJkZWxldGU6bW92aWVzIiwiZ2V0OmFjdG9ycyIsImdldDptb3ZpZXMiLCJwYXRjaDphY3RvcnMiLCJwYXRjaDptb3ZpZXMiLCJwb3N0OmFjdG9ycyIsInBvc3Q6bW92aWVzIl19.OhJ3xdgiAt7F3ubHyHbOu5Q1HsSiKnqgIFEhMNpqhM_byugUTZ7Qt6U_kV1_IE6-9ePCgGp3qOkirtw6XnffWN879yaXMcrdMfkwgwiOIVJwLalArBdytr_LhE9hubLjWpxKulszc7Jtv-2Yu4Ew6Z3GpXKu3ZTN3uhKpSeU7OIIEHqpz8IzXFHc5xUFWQPTYoSyUd27M3_5SG0O2s6Y6KF8OUsuQhlkvxpn6wjTL45LTMUKjMO2dpmq447aKoGuzrRK69HOzRv9Q02zsYOPFgaKUUTLMqbHDnhq-Ol2U-DWjcSlJEQL1NIUc8TTJVMbj5eKJT9TUj7SgzMSTBMm7A')
 
     def tearDown(self):
@@ -272,7 +272,7 @@ class CastingAgencyTestCase(unittest.TestCase):
         data = json.loads(res.data)
         self.assertEqual(res.status_code,401)
 
-    '''def test_expired_token(self):
+    def test_expired_token(self):
         res = self.client().patch('/movies/1000000',json={
             "title":"Young Masala Fail"
         },headers = {
@@ -280,8 +280,7 @@ class CastingAgencyTestCase(unittest.TestCase):
         })
         data = json.loads(res.data)
         self.assertEqual(res.status_code,401)
-        self.assertEqual(data['status'],'Failure')
-    '''
+       
 
     def test_invalid_token(self):
         res = self.client().patch('/movies/1000000',json={
