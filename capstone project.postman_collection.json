@@ -1,0 +1,1482 @@
+{
+	"info": {
+		"_postman_id": "bc1b3375-5edf-41d0-b7c2-d97229355d51",
+		"name": "capstone project",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Casting Assistant",
+			"item": [
+				{
+					"name": "/actors",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://stormy-fortress-51211.herokuapp.com/actors",
+							"protocol": "https",
+							"host": [
+								"stormy-fortress-51211",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"actors"
+							]
+						},
+						"description": "Gets all of the actors"
+					},
+					"response": []
+				},
+				{
+					"name": "/actors (valid id)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://stormy-fortress-51211.herokuapp.com/actors/1",
+							"protocol": "https",
+							"host": [
+								"stormy-fortress-51211",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"actors",
+								"1"
+							]
+						},
+						"description": " Getting a specific actor by id"
+					},
+					"response": []
+				},
+				{
+					"name": "/actors (invalid id)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://stormy-fortress-51211.herokuapp.com/1000",
+							"protocol": "https",
+							"host": [
+								"stormy-fortress-51211",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"1000"
+							]
+						},
+						"description": "Failed message for a specific actor id"
+					},
+					"response": []
+				},
+				{
+					"name": "/movies",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://stormy-fortress-51211.herokuapp.com/movies",
+							"protocol": "https",
+							"host": [
+								"stormy-fortress-51211",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"movies"
+							]
+						},
+						"description": "Gets all of the movies"
+					},
+					"response": []
+				},
+				{
+					"name": "/movies (not able to perform)",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://stormy-fortress-51211.herokuapp.com/movies/3",
+							"protocol": "https",
+							"host": [
+								"stormy-fortress-51211",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"movies",
+								"3"
+							]
+						},
+						"description": "Delete a single movie record"
+					},
+					"response": []
+				},
+				{
+					"name": "/actors (not able to perform)",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://stormy-fortress-51211.herokuapp.com/actors/3",
+							"protocol": "https",
+							"host": [
+								"stormy-fortress-51211",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"actors",
+								"3"
+							]
+						},
+						"description": "Delete a single actor record"
+					},
+					"response": []
+				},
+				{
+					"name": "/actors (not able to perform)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"Jar Letap32\",\r\n    \"age\": 32,\r\n    \"gender\": \"Male\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://stormy-fortress-51211.herokuapp.com/actors",
+							"protocol": "https",
+							"host": [
+								"stormy-fortress-51211",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"actors"
+							]
+						},
+						"description": "Create a new actor record"
+					},
+					"response": []
+				},
+				{
+					"name": "/movies (not able to perform)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\":\"Young Masala4\",\r\n    \"releaseDate\": \"1991-11-15\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://stormy-fortress-51211.herokuapp.com/movies",
+							"protocol": "https",
+							"host": [
+								"stormy-fortress-51211",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"movies"
+							]
+						},
+						"description": "Creating a new movie record"
+					},
+					"response": []
+				},
+				{
+					"name": "/actors (not able to perform)",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"gender\":\"Male\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://stormy-fortress-51211.herokuapp.com/actors/1",
+							"protocol": "https",
+							"host": [
+								"stormy-fortress-51211",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"actors",
+								"1"
+							]
+						},
+						"description": "Update a specfic actor's information"
+					},
+					"response": []
+				},
+				{
+					"name": "/movies (not able to perform)",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"releaseDate\": \"1991-11-16\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://stormy-fortress-51211.herokuapp.com/movies/1",
+							"protocol": "https",
+							"host": [
+								"stormy-fortress-51211",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"movies",
+								"1"
+							]
+						},
+						"description": "Update a specfic movie's information"
+					},
+					"response": []
+				}
+			],
+			"description": "All of the calls made using the casting assistant credentials",
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IklJb0wwQkNXS0lqdF9vU1gyczFzNSJ9.eyJpc3MiOiJodHRwczovL2Rldi0zanY0YmswNS51cy5hdXRoMC5jb20vIiwic3ViIjoiYXV0aDB8NWYyMzcyNDYzMmNlYTMwMjIxMTQxNTkwIiwiYXVkIjoiY2Fwc3RvbmUiLCJpYXQiOjE1OTcyNDg4NzksImV4cCI6MTU5NzMzNTI3OSwiYXpwIjoiVzU3T1V3TXJoM2h6emx1a0FiREtBTzEweVppQVd4UjEiLCJzY29wZSI6IiIsInBlcm1pc3Npb25zIjpbImdldDphY3RvcnMiLCJnZXQ6bW92aWVzIl19.H45R9Bwcu2UIuzUPSVUopcbWYV--QR6hSWnYTEZnQbQx8bIq7l4Tyu8ujkBA_p_Wnmx24fjoIfKK_xQRc7pLlQEIbClRXjstn5L-J69p7VcmNpMQDsO8ChmJagVKzz644XDZr_12lJubgxp6jJyyYFwLgCWb0jLkOj-eprvjq77rV2p56nJZ5qROrK1d9EsV0LdRKdtwwynTbkA-1vQYBskVKB5I8fTUnlvr4vBW-UGkTM6dZL3V4Q3lk6BSVwwl-r2Ifm094pKl5ZzH6hpYTE528IOWMI1lROBq0x-8yqulGN3ZsO2-RmiBJ_VxWNL91Wab31e47bYelbcX0J3jTA",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "6e3179d5-b377-49c7-842d-a9463e32ccbc",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "170e0bba-42ef-413b-9d92-caa9bd4d1b08",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Casting Director",
+			"item": [
+				{
+					"name": "/actors",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://stormy-fortress-51211.herokuapp.com/actors",
+							"protocol": "https",
+							"host": [
+								"stormy-fortress-51211",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"actors"
+							]
+						},
+						"description": "Gets all of the actors"
+					},
+					"response": []
+				},
+				{
+					"name": "/actors (valid id)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://stormy-fortress-51211.herokuapp.com/actors/1",
+							"protocol": "https",
+							"host": [
+								"stormy-fortress-51211",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"actors",
+								"1"
+							]
+						},
+						"description": " Getting a specific actor by id"
+					},
+					"response": []
+				},
+				{
+					"name": "/actors (invalid id)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://stormy-fortress-51211.herokuapp.com/actors/1000",
+							"protocol": "https",
+							"host": [
+								"stormy-fortress-51211",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"actors",
+								"1000"
+							]
+						},
+						"description": "Failed message for a specific actor id"
+					},
+					"response": []
+				},
+				{
+					"name": "/movies",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://stormy-fortress-51211.herokuapp.com/movies",
+							"protocol": "https",
+							"host": [
+								"stormy-fortress-51211",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"movies"
+							]
+						},
+						"description": "Gets all of the movies"
+					},
+					"response": []
+				},
+				{
+					"name": "/movies (not able to perform)",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://stormy-fortress-51211.herokuapp.com/movies/2",
+							"protocol": "https",
+							"host": [
+								"stormy-fortress-51211",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"movies",
+								"2"
+							]
+						},
+						"description": "Delete a single movie record"
+					},
+					"response": []
+				},
+				{
+					"name": "/actors (valid id)",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://stormy-fortress-51211.herokuapp.com/actors/6",
+							"protocol": "https",
+							"host": [
+								"stormy-fortress-51211",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"actors",
+								"6"
+							]
+						},
+						"description": "Delete a single actor record"
+					},
+					"response": []
+				},
+				{
+					"name": "/actors (invalid id)",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://stormy-fortress-51211.herokuapp.com/actors/300000",
+							"protocol": "https",
+							"host": [
+								"stormy-fortress-51211",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"actors",
+								"300000"
+							]
+						},
+						"description": "Delete a single actor record"
+					},
+					"response": []
+				},
+				{
+					"name": "/actors",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"Jar Letap32\",\r\n    \"age\": 32,\r\n    \"gender\": \"Male\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://stormy-fortress-51211.herokuapp.com/actors",
+							"protocol": "https",
+							"host": [
+								"stormy-fortress-51211",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"actors"
+							]
+						},
+						"description": "Create a new actor record"
+					},
+					"response": []
+				},
+				{
+					"name": "/movies (not able to perform)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\":\"Young Masala4\",\r\n    \"releaseDate\": \"1991-11-15\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://stormy-fortress-51211.herokuapp.com/movies",
+							"protocol": "https",
+							"host": [
+								"stormy-fortress-51211",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"movies"
+							]
+						},
+						"description": "Creating a new movie record"
+					},
+					"response": []
+				},
+				{
+					"name": "/actors (valid id)",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"gender\":\"Male\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://stormy-fortress-51211.herokuapp.com/actors/1",
+							"protocol": "https",
+							"host": [
+								"stormy-fortress-51211",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"actors",
+								"1"
+							]
+						},
+						"description": "Update a specfic actor's information"
+					},
+					"response": []
+				},
+				{
+					"name": "/actors (invalid id)",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"gender\":\"Male\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://stormy-fortress-51211.herokuapp.com/actors/10000",
+							"protocol": "https",
+							"host": [
+								"stormy-fortress-51211",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"actors",
+								"10000"
+							]
+						},
+						"description": "Update a specfic actor's information"
+					},
+					"response": []
+				},
+				{
+					"name": "/movies (valid id)",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"releaseDate\": \"1991-11-16\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://stormy-fortress-51211.herokuapp.com/movies/1",
+							"protocol": "https",
+							"host": [
+								"stormy-fortress-51211",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"movies",
+								"1"
+							]
+						},
+						"description": "Update a movie"
+					},
+					"response": []
+				},
+				{
+					"name": "/movies (invalid id)",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"releaseDate\": \"1991-11-16\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://stormy-fortress-51211.herokuapp.com/movies/1000000000",
+							"protocol": "https",
+							"host": [
+								"stormy-fortress-51211",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"movies",
+								"1000000000"
+							]
+						},
+						"description": "Update a movie"
+					},
+					"response": []
+				}
+			],
+			"description": "All of the calls made using the casting director credentials",
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IklJb0wwQkNXS0lqdF9vU1gyczFzNSJ9.eyJpc3MiOiJodHRwczovL2Rldi0zanY0YmswNS51cy5hdXRoMC5jb20vIiwic3ViIjoiYXV0aDB8NWYyMzcyMjVkYzY4MjYwMGEwYjYzYzM0IiwiYXVkIjoiY2Fwc3RvbmUiLCJpYXQiOjE1OTcyNDkwMjMsImV4cCI6MTU5NzMzNTQyMywiYXpwIjoiVzU3T1V3TXJoM2h6emx1a0FiREtBTzEweVppQVd4UjEiLCJzY29wZSI6IiIsInBlcm1pc3Npb25zIjpbImRlbGV0ZTphY3RvcnMiLCJnZXQ6YWN0b3JzIiwiZ2V0Om1vdmllcyIsInBhdGNoOmFjdG9ycyIsInBhdGNoOm1vdmllcyIsInBvc3Q6YWN0b3JzIl19.xDS4ivsXJKX1RZvxJCgAhZQPgTgxkmLalCd3fqqmGQ030-TdeJrwlfJXl77sRap2X8AIm87IMV9TCf1STWrz7l9_1LvNocMFXmvIpFVog_0Y2Bp86ZvWznqFiEnhHR0IRqk5NWz4Syb0HYp3uryZNqeKbvBqgZ9wGWjCRAiHhEvE5lZz3u8ro19KqRAi1g1yo0Ap9QGbZfWAwAajCrjbQN08l2oGYV2FJAgUYJqDKdGQhtC6h9_mcd3QZprzjurLIyQUQnYZu6G2sERDF_x-wN45rlL7BaxOHlLbKzffdlHEyOPqFRRgXG0YxgUNOErD_P8k5EHEyugYMbSUhL-DSw",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "0fb851d8-b33a-47bc-ad2a-7f03d2f6ab42",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "cb3b22ca-7813-44c6-8a1f-8b997e2b5a3d",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Executive Producer ",
+			"item": [
+				{
+					"name": "/actors",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://stormy-fortress-51211.herokuapp.com/actors",
+							"protocol": "https",
+							"host": [
+								"stormy-fortress-51211",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"actors"
+							]
+						},
+						"description": "Gets all of the actors"
+					},
+					"response": []
+				},
+				{
+					"name": "/actors (valid id)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://stormy-fortress-51211.herokuapp.com/actors/1",
+							"protocol": "https",
+							"host": [
+								"stormy-fortress-51211",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"actors",
+								"1"
+							]
+						},
+						"description": " Getting a specific actor by id"
+					},
+					"response": []
+				},
+				{
+					"name": "/actors (invalid id)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://stormy-fortress-51211.herokuapp.com/actors/10000",
+							"protocol": "https",
+							"host": [
+								"stormy-fortress-51211",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"actors",
+								"10000"
+							]
+						},
+						"description": " Getting a specific actor by id"
+					},
+					"response": []
+				},
+				{
+					"name": "/movies",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://stormy-fortress-51211.herokuapp.com/movies",
+							"protocol": "https",
+							"host": [
+								"stormy-fortress-51211",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"movies"
+							]
+						},
+						"description": "Gets all of the movies"
+					},
+					"response": []
+				},
+				{
+					"name": "/movies",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://stormy-fortress-51211.herokuapp.com/movies/5",
+							"protocol": "https",
+							"host": [
+								"stormy-fortress-51211",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"movies",
+								"5"
+							]
+						},
+						"description": "Delete a single movie record"
+					},
+					"response": []
+				},
+				{
+					"name": "/movies (invalid id)",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://stormy-fortress-51211.herokuapp.com/movies/3000000",
+							"protocol": "https",
+							"host": [
+								"stormy-fortress-51211",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"movies",
+								"3000000"
+							]
+						},
+						"description": "Try to delete a single movie record that does not exist"
+					},
+					"response": []
+				},
+				{
+					"name": "/actors",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://stormy-fortress-51211.herokuapp.com/actors/6",
+							"protocol": "https",
+							"host": [
+								"stormy-fortress-51211",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"actors",
+								"6"
+							]
+						},
+						"description": "Delete a single actor record"
+					},
+					"response": []
+				},
+				{
+					"name": "/actors (invalid id)",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://stormy-fortress-51211.herokuapp.com/actors/300000",
+							"protocol": "https",
+							"host": [
+								"stormy-fortress-51211",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"actors",
+								"300000"
+							]
+						},
+						"description": "Delete a single actor record"
+					},
+					"response": []
+				},
+				{
+					"name": "/actors",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"Jar Letap32\",\r\n    \"age\": 32,\r\n    \"gender\": \"Male\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://stormy-fortress-51211.herokuapp.com/actors",
+							"protocol": "https",
+							"host": [
+								"stormy-fortress-51211",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"actors"
+							]
+						},
+						"description": "Create a new actor record"
+					},
+					"response": []
+				},
+				{
+					"name": "/movies",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\":\"Young Masala4\",\r\n    \"releaseDate\": \"1991-11-15\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://stormy-fortress-51211.herokuapp.com/movies",
+							"protocol": "https",
+							"host": [
+								"stormy-fortress-51211",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"movies"
+							]
+						},
+						"description": "Creating a new movie record"
+					},
+					"response": []
+				},
+				{
+					"name": "/actors (valid id)",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"gender\":\"Female\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://stormy-fortress-51211.herokuapp.com/actors/1",
+							"protocol": "https",
+							"host": [
+								"stormy-fortress-51211",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"actors",
+								"1"
+							]
+						},
+						"description": "Update an actor"
+					},
+					"response": []
+				},
+				{
+					"name": "/actors (invalid id)",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"gender\":\"Female\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://stormy-fortress-51211.herokuapp.com/actors/10000",
+							"protocol": "https",
+							"host": [
+								"stormy-fortress-51211",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"actors",
+								"10000"
+							]
+						},
+						"description": "Update an actor"
+					},
+					"response": []
+				},
+				{
+					"name": "/movies (valid id)",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"releaseDate\": \"1991-11-17\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://stormy-fortress-51211.herokuapp.com/movies/1",
+							"protocol": "https",
+							"host": [
+								"stormy-fortress-51211",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"movies",
+								"1"
+							]
+						},
+						"description": "Update a movie"
+					},
+					"response": []
+				},
+				{
+					"name": "/movies (invalid id)",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"releaseDate\": \"1991-11-16\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://stormy-fortress-51211.herokuapp.com/movies/10000",
+							"protocol": "https",
+							"host": [
+								"stormy-fortress-51211",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"movies",
+								"10000"
+							]
+						},
+						"description": "Update a movie"
+					},
+					"response": []
+				}
+			],
+			"description": "All of the calls made using the executive producer credentials",
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IklJb0wwQkNXS0lqdF9vU1gyczFzNSJ9.eyJpc3MiOiJodHRwczovL2Rldi0zanY0YmswNS51cy5hdXRoMC5jb20vIiwic3ViIjoiYXV0aDB8NWYyMzcyYjc1Yzg0OGYwMDM3YzQyODE5IiwiYXVkIjoiY2Fwc3RvbmUiLCJpYXQiOjE1OTcyNDkxNjEsImV4cCI6MTU5NzMzNTU2MSwiYXpwIjoiVzU3T1V3TXJoM2h6emx1a0FiREtBTzEweVppQVd4UjEiLCJzY29wZSI6IiIsInBlcm1pc3Npb25zIjpbImRlbGV0ZTphY3RvcnMiLCJkZWxldGU6bW92aWVzIiwiZ2V0OmFjdG9ycyIsImdldDptb3ZpZXMiLCJwYXRjaDphY3RvcnMiLCJwYXRjaDptb3ZpZXMiLCJwb3N0OmFjdG9ycyIsInBvc3Q6bW92aWVzIl19.nx1qb3ojcmePkionbIgFnXfC2K_qqhivU0WSghhMPR4gMqz8JiBqf2S9MkXvOObkHeVlpIvreKHwPQIfg9V_dKnTJ95nWaLFQUE6psLhriZkVG38Y_TeMczAYrAyQ4q35d2LgOl8k3_svaLekeNtbMic68oX0fbTvmXCM0bjQGc9fNQcXRovrbR4nXwKpczguDGnlYKHuw0_PEMB8ZeDGEiQFEZA-yiUN_pZ7kdZAPKQaMwURXkPTYn0NabDqFhFKt0RfNqTUffp2UKY-JYTNASRZ5e1NPJ_U0UBGckND7C4GgpGb4uNFhIui6OP3mLkLHPMRgvJEf-O3LtSyTRgMQ",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "e5ed6007-b156-4f45-914f-d8fca7fe0f71",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "1840748f-0b4a-47a0-9df1-bfd3042ba257",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "No token",
+			"item": [
+				{
+					"name": "/actors (no token)",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://stormy-fortress-51211.herokuapp.com/actors",
+							"protocol": "https",
+							"host": [
+								"stormy-fortress-51211",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"actors"
+							]
+						},
+						"description": "Failed message for a specific actor id"
+					},
+					"response": []
+				},
+				{
+					"name": "/actors (no token)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://stormy-fortress-51211.herokuapp.com/actors/1",
+							"protocol": "https",
+							"host": [
+								"stormy-fortress-51211",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"actors",
+								"1"
+							]
+						},
+						"description": " Getting a specific actor by id"
+					},
+					"response": []
+				},
+				{
+					"name": "/movies (no token)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://stormy-fortress-51211.herokuapp.com/movies",
+							"protocol": "https",
+							"host": [
+								"stormy-fortress-51211",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"movies"
+							]
+						},
+						"description": "Gets all of the movies"
+					},
+					"response": []
+				},
+				{
+					"name": "/movies (no token)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\":\"Young Masala\",\r\n    \"releaseDate\": \"1991-11-15\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://stormy-fortress-51211.herokuapp.com/movies/3",
+							"protocol": "https",
+							"host": [
+								"stormy-fortress-51211",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"movies",
+								"3"
+							]
+						},
+						"description": "Delete a single movie record"
+					},
+					"response": []
+				},
+				{
+					"name": "/actors (no token)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\":\"Young Masala\",\r\n    \"releaseDate\": \"1991-11-15\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://stormy-fortress-51211.herokuapp.com/actors/3",
+							"protocol": "https",
+							"host": [
+								"stormy-fortress-51211",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"actors",
+								"3"
+							]
+						},
+						"description": "Delete a single actor record"
+					},
+					"response": []
+				},
+				{
+					"name": "/actors (no token)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"Jar Letap32\",\r\n    \"age\": 32,\r\n    \"gender\": \"Male\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://stormy-fortress-51211.herokuapp.com/actors",
+							"protocol": "https",
+							"host": [
+								"stormy-fortress-51211",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"actors"
+							]
+						},
+						"description": "Create a new actor record"
+					},
+					"response": []
+				},
+				{
+					"name": "/movies (no token)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\":\"Young Masala4\",\r\n    \"releaseDate\": \"1991-11-15\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://stormy-fortress-51211.herokuapp.com/movies",
+							"protocol": "https",
+							"host": [
+								"stormy-fortress-51211",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"movies"
+							]
+						},
+						"description": "Creating a new movie record"
+					},
+					"response": []
+				},
+				{
+					"name": "/actors (no token)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"gender\":\"Male\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://stormy-fortress-51211.herokuapp.com/actors/1",
+							"protocol": "https",
+							"host": [
+								"stormy-fortress-51211",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"actors",
+								"1"
+							]
+						},
+						"description": "Update an actor"
+					},
+					"response": []
+				},
+				{
+					"name": "/movies (no token)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"releaseDate\": \"1991-11-16\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://stormy-fortress-51211.herokuapp.com/movies/1",
+							"protocol": "https",
+							"host": [
+								"stormy-fortress-51211",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"movies",
+								"1"
+							]
+						},
+						"description": "Update a movie"
+					},
+					"response": []
+				}
+			],
+			"description": "All the api requests with no token provided",
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
