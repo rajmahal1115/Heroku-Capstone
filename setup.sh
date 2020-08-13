@@ -11,8 +11,8 @@ export ALGORITHMS='RS256'
 export API_AUDIENCE='capstone'
 
 #app.py
-export DATABASE_URL='postgres://postgres:Narnarayan@localhost:5432/castingAgency'
+export DATABASE_URL='postgres://localhost:5432/castingAgency'
 
 #test.py
-export DATABASE_URL_TEST='postgres://postgres:Narnarayan@localhost:5432/castingAgency_test'
+export DATABASE_URL_TEST='postgres://localhost:5432/castingAgency_test'
 
