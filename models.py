@@ -1,6 +1,13 @@
 import os
 import enum
-from sqlalchemy import Column, String, Enum, Date, Integer, create_engine
+from sqlalchemy import ( 
+Column, 
+String, 
+Enum, 
+Date, 
+Integer, 
+create_engine
+)
 from flask_sqlalchemy import SQLAlchemy
 import json
 
@@ -19,6 +26,7 @@ def setup_db(app, database_path):
     db.app = app
     db.init_app(app)
     db.create_all()
+
 
 class Gender(enum.Enum):
     Male = 1
@@ -48,15 +56,13 @@ class Actor(db.Model):
         db.session.add(self)
         db.session.commit()
 
-
     def update(self):
         db.session.commit()
-
 
     def delete(self):
         db.session.delete(self)
         db.session.commit()
-    
+
     def format(self):
         return {
             'id': self.id,
@@ -86,10 +92,8 @@ class Movie(db.Model):
         db.session.add(self)
         db.session.commit()
 
-
     def update(self):
         db.session.commit()
-
 
     def delete(self):
         db.session.delete(self)

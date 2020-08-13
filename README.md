@@ -9,6 +9,60 @@ This project was the final project in the Udacity Nanodegree.The goal was to cre
 - app.py : Contains all of the CRUD operation logic 
 - test_app.py : Contains all of the unit tests for the project 
 - requirements.txt : Contains all of the required packages for the project. You will need to `pip install -r requirements.txt`
+- setup.sh - set up environment variables for linux based machinces 
+- setup.bat - set up environment variables for windows 
+
+### Data Model
+
+There are 2 tables in the database: actors and movies. The Actors keeps track of all of the actors. The table has the columns : id (integer), name (string), age (int) and gender (enum). Gender can be Male,Female or Unknown. The Movies table keeps track of all of the movies. It has the columns : id (integer), title (string) and releaseDate (date). Each table has an insert,update, delete and format helper function.  
+
+### Installing dependecies 
+
+Follow instructions to install the correct version of Python for your platform from https://docs.python.org/3/using/index.html 
+
+
+### Virtual Environment 
+ 
+ In order to keep all of the dependecies for each project seperate, we will be working in a virtual environemnt. Instructions on setting up a virtual enviornement can be found here https://packaging.python.org/guides/installing-using-pip-and-virtual-environments/ 
+
+ ```
+ python -m venv venv
+venv/bin/activate
+ ```
+
+### PIP Dependecies 
+
+Once the virtual enviornment is setup and running the dependecies will need to be installed in the root directory using the following command which will download the required packages for the project: 
+
+`pip install -r requirements.txt`
+
+### Setup File
+
+In the setup.sh and setup.bat files there are environment variables set up that are used within the app. In order to run the app on windows run the setup.bat file in the command prompt (at the root folder of the project) and in order to run the app on a linux based machine run the setup.sh file (at the root folder of the project).  
+
+### Local Database Setup
+
+Once your database has been created open up your command prompt/terminal, go to the root directory and run:
+
+```
+flask db init
+flask db migrate -m "Initial migration."
+flask db upgrade
+```
+
+### Running the server
+
+From within the root directory you can run the server by running the below commands in the command prompt/ terminal. Note for linux based machines change the "set" to "export". Before running the commands make sure to run setup.bat or setup.bat in the root of the project folder to set the enviornment variables.
+
+```
+set FLASK_APP=app.py
+set FLASK_DEBUG=true
+set FLASK_ENV=development
+flask run
+```
+### Heroku
+
+The app is hosted on Heroku and the link to access it is the following: https://stormy-fortress-51211.herokuapp.com
 
 ### Roles
 
@@ -17,14 +71,14 @@ There are three roles that are set up inside of Auth0.
 - Casting Director : Able to do everything the casting agent can, add/delete actors and modify actors/movies
 - Executive Producer : Able to do everything the previous 2 can and add/ delete movies
 
-### Heroku
 
-The app is hosted on Heroku and the link to access it is the following: https://stormy-fortress-51211.herokuapp.com
+### Testing Locally
 
-### Testing
+There is a test_app.py file which was used to test the functionality of the endpoints in the test environment. Similar to when running the app you will need to run setup.bat or setup.sh. In order to test the code a database will have to be created called "castingAgency_test". It is currently set up to go to a database locally. Once that is done you can run the code the following command.
 
-There is a test_app.py file which was used to test the functionality of the endpoints in the test environment.
-In order to test the code a database will have to be created called "castingAgency_test". It is currently set up to go to a database locally. Once that is done you can run the code like any python file in the command prompt/terminal.
+```
+python test_app.py
+```
 
  Also there is a POSTMAN collection used to test the following endpoint in the production environment. 
 

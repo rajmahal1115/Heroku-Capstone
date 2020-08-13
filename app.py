@@ -2,16 +2,20 @@ import os
 from flask import Flask, request, abort, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
-from werkzeug.exceptions import BadRequest, InternalServerError, NotFound, UnprocessableEntity
-
+from werkzeug.exceptions import (
+    BadRequest, 
+    InternalServerError, 
+    NotFound, 
+    UnprocessableEntity
+)
 from models import setup_db, Actor, Movie, Gender
-from auth import AuthError, requires_auth 
+from auth import AuthError, requires_auth
 
-def create_app(test_config=None):
+
+def create_app(db_path):
     # create and configure the app
-    database_path = os.environ['DATABASE_URL'] if not test_config else test_config['DATABASE_URL']
     app = Flask(__name__)
-    setup_db(app, database_path)
+    setup_db(app, db_path)
     CORS(app)
 
     # get a single actor
@@ -21,7 +25,7 @@ def create_app(test_config=None):
         actor = Actor.query.get(id)
         if not actor:
             raise NotFound
-        else: 
+        else:
             return jsonify({'actor': actor.format()})
 
     # get all actors
@@ -74,7 +78,7 @@ def create_app(test_config=None):
             'status': 'Success'
         })
 
-	# add an actor
+        # add an actor
     @app.route('/actors', methods=['POST'])
     @requires_auth("post:actors")
     def create_actor():
@@ -82,7 +86,7 @@ def create_app(test_config=None):
         name = body.get('name')
         age = body.get('age')
         gender = body.get('gender')
-        
+
         if not name or not age or not gender:
             raise BadRequest
         try:
@@ -105,45 +109,45 @@ def create_app(test_config=None):
 
         if not title or not releaseDate:
             raise BadRequest
-		
+
         try:
-            movie = Movie(title,releaseDate)
+            movie = Movie(title, releaseDate)
             movie.insert()
         except Exception:
-	        raise InternalServerError
-        return jsonify({ 'status': 'Success'})
+            raise InternalServerError
+        return jsonify({'status': 'Success'})
 
-	# update an actor
+        # update an actor
     @app.route('/actors/<int:id>', methods=['PATCH'])
     @requires_auth("patch:actors")
     def update_actor(id):
         actor = Actor.query.get(id)
         if not actor:
             raise NotFound
-		
+
         body = request.get_json()
-        name = body.get('name',None)
-        age = body.get('age',None)
-        gender = body.get('gender',None)
+        name = body.get('name', None)
+        age = body.get('age', None)
+        gender = body.get('gender', None)
 
         if name:
             actor.name = name
         if age:
             actor.age = age
         if gender:
-	        actor.gender = Gender[gender]
+            actor.gender = Gender[gender]
         try:
             actor.update()
-        
-        except Exception:
-	        raise InternalServerError
-        
-        return jsonify({
-        'status': 'Success',
-        'actor': actor.format() 
-    	})
 
-	# update a movie
+        except Exception:
+            raise InternalServerError
+
+        return jsonify({
+            'status': 'Success',
+            'actor': actor.format()
+        })
+
+        # update a movie
     @app.route('/movies/<int:id>', methods=['PATCH'])
     @requires_auth("patch:movies")
     def update_movie(id):
@@ -152,26 +156,26 @@ def create_app(test_config=None):
             raise NotFound
 
         body = request.get_json()
-        title = body.get('title',None)
-        releaseDate = body.get('releaseDate',None)
-        
+        title = body.get('title', None)
+        releaseDate = body.get('releaseDate', None)
+
         if title:
             movie.title = title
         if releaseDate:
             movie.releaseDate = releaseDate
-		
+
         try:
             movie.update()
 
         except Exception:
-	        raise InternalServerError
+            raise InternalServerError
 
         return jsonify({
-        'status': 'Success',
-        'movie': movie.format() 
-    	})
+            'status': 'Success',
+            'movie': movie.format()
+        })
 
-	# error handlers 
+        # error handlers
     @app.errorhandler(BadRequest)
     def bad_request_handler(error):
         return jsonify({
@@ -195,7 +199,7 @@ def create_app(test_config=None):
         return jsonify({
             'status': 'Failure'
         }), 500
-    
+
     @app.errorhandler(AuthError)
     def handle_auth_error(ex):
         response = jsonify(ex.error)
@@ -204,7 +208,8 @@ def create_app(test_config=None):
 
     return app
 
-app = create_app()
 
-if __name__ == '__main__':    
+app = create_app(os.environ.get('DATABASE_URL'))
+
+if __name__ == '__main__':
     app.run()
